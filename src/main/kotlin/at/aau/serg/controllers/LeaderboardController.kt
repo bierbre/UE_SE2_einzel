@@ -13,7 +13,10 @@ class LeaderboardController(
 ) {
 
     @GetMapping
-    fun getLeaderboard(): List<GameResult> =
-        gameResultService.getGameResults().sortedWith(compareBy({ -it.score }, { it.id }))
+    fun getLeaderboard(): List<GameResult>{
+    val list  = gameResultService.getGameResults().sortedWith(compareBy({ -it.score }, { it.timeInSeconds }))
 
+
+        return list
+}
 }
